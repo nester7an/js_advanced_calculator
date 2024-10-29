@@ -7,6 +7,9 @@ function makeCalculator() {
   return {
     result: 0,
     operate(operation, number) {
+      if (typeof operation !== 'function') {
+        return;
+      }
       operation.call(this, number);
 
       return this;
@@ -27,6 +30,9 @@ function makeCalculator() {
       return this;
     },
     divide(number) {
+      if (number === 0) {
+        return;
+      }
       this.result /= number;
 
       return this;
